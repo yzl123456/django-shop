@@ -8,6 +8,7 @@ from goodslist.models import *
 from index.models import *
 from registerLogin.models import *
 from usercenter.models import *
+from order.models import *
 from django.db.models import *
 from datetime import datetime
 import time

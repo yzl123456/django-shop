@@ -1,7 +1,9 @@
 # coding=utf-8
 from django.shortcuts import render, redirect
 from django.http import *
-from models import *
+from .models import *
+from usercenter.models import *
+from goodslist.models import *
 from datetime import datetime
 import random
 
@@ -20,7 +22,6 @@ def userorder(request):
 	if pIndex == '' or pIndex == None:
 		pIndex = '1'
 	pIndex=int(pIndex)
-
 	#获得总页面数量
 	userlist = Orders.objects.filter(isDelete=False).filter(userOrder=1).order_by("-id")
 	listlen = len(userlist)
@@ -30,14 +31,14 @@ def userorder(request):
 		sumpage+=1
 		#获得订单中的物品总类数
 		orderlist3 = Orders.objects.filter(extra=userlist[i].extra).count()
-		print 'orderlist3',orderlist3
+		print('orderlist3',orderlist3)
 		i+=orderlist3
 	if sumpage%2 >0:
 		sumpage = (sumpage/2) + 1
 
 	else:
 		sumpage = sumpage/2
-	print 'sumpage',sumpage
+	print('sumpage',sumpage)
 	sumpage = list(range(1,sumpage))
 	
 	#获得页面上第一个应该显示的物品是第几个物品(i)
@@ -45,7 +46,7 @@ def userorder(request):
 	for temp in range((pIndex-1)*2):
 		orderlist3 = Orders.objects.filter(extra=userlist[i].extra).count()
 		i+=orderlist3
-	print i
+	print(i)
 	#构造页面上第一个订单
 	list1 = []
 	time1 = userlist[i].orderTime
@@ -121,7 +122,7 @@ def usersite(request):
 	return render(request, 'freshFruit/user_center_site.html')
 def test(request):
 
-	return render(request, 'freshFruit/user_center_info.html',{'list':list1})
+	return render(request, 'freshFruit/user_center_info.html',locals())
 
 
 

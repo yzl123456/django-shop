@@ -6,6 +6,7 @@ from detail.models import *
 from goodslist.models import *
 from index.models import *
 from registerLogin.models import *
+from order.models import *
 from usercenter.models import *
 from datetime import datetime
 from django.core.urlresolvers import reverse
@@ -140,6 +141,8 @@ def user_center_order(request,dic):
 			plist=plist[0:pIndex+2]
 		else:
 			plist=plist[pIndex-2:pIndex+1]
+
+	print("**********")
 
 	orders=[]
 	for order in orderlist2:
