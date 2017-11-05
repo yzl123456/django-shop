@@ -3,7 +3,8 @@ from haystack.generic_views import SearchView
 from .models import *
 from django.http import *
 from django.shortcuts import render
-
+from usercenter.models import UserInfo
+from goodslist.models import Goods,GoodSort
 # 重写haystack的视图类，为了在搜索时可以拿到数据，做到搜索页的状态保持
 class MySearchView(SearchView):
 	def get_context_data(self,*args,**kwargs):

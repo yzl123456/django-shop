@@ -37,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'haystack',
+
     'tinymce',
     'registerLogin',
     'usercenter',
@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'detail',
     'cart',
     'order',
+    'haystack',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -134,5 +135,5 @@ HAYSTACK_CONNECTIONS = {
     }
 }
 
-
+#自动更新索引
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
