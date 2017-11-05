@@ -8,12 +8,16 @@
 		<div class="right_content clearfix">
 			
 				<h3 class="common_title2">全部订单</h3>
+                {% if not orderlist %}
+                    暂无订单信息！
+                {% else %}
 				{%for orde in orderlist%}
 				<ul class="order_list_th w978 clearfix">
 					<li class="col01">{{orde.order.orderTime}}</li>
 					<li class="col02">订单号：{{orde.order.orderNumber}}</li>
 					<li class="col02 stress">{%if orde.order.isFinish == 1%}已付款{%else%}未支付{%endif%}</li>		
 				</ul>
+
 				<table class="order_list_table w980">
 					<tbody>
 						<tr>
@@ -45,6 +49,8 @@
 				
 				<p style="display: none">{{orde.addr.aProvince}} {{orde.addr.aCity}} {{orde.addr.aDis}} {{orde.addr.aDetaAddr}}（{{orde.addr.aAddressee}} 收） {%for i in orde.addr.aPhoneNumber%}{%if forloop.counter <= 3 or forloop.counter > 7%}{{i}}{%else%}*{%endif%}{%endfor%}</p>	
 				{%endfor%}
+                {% endif %}
+                {% if orderlist %}
 				<div class="pagenation">
 					<a href="#" id='toleft'><上一页</a>
 					{%for index in plist%}
@@ -52,6 +58,7 @@
 					{%endfor%}
 					<a href="#" id='toright'>下一页></a>
 				</div>
+                {% endif %}
 		</div>
 	</div>
 	<script type="text/javascript" src="{% static 'js/jquery-1.12.4.min.js' %}"></script>

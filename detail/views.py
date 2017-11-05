@@ -75,7 +75,16 @@ def addcart(request):
 		cart.goodsName=goodsID  #goodsName存储商品id 字符串类型，待修改
 		cart.buyCount=int(buyCount)
 		cart.userCart_id=user.pk
-		cart.save()
+		#print(Cart.objects.filter(userCart=user.pk).filter(isDelete=0).get(goodsName=goodsID))
+		try :
+			print("---------")
+			item=Cart.objects.filter(userCart=user.pk).filter(isDelete=0).get(goodsName=goodsID)
+			print(item.buyCount)
+			print("id"+str(item.id))
+			item.buyCount=item.buyCount+cart.buyCount
+			item.save()
+		except:
+			cart.save()
 		number=user.cart_set.filter(isDelete=False).count()
 		return JsonResponse({'number':number})
 

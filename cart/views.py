@@ -21,7 +21,10 @@ def cart(request,dic):
 	'''
 	cartlist = dic['user'].cart_set.all().filter(isDelete=False)
 	car_good_list=[]
+
 	for car in cartlist:
+
+
 		car_good_list.append({'cart':car,'good':Goods.objects.get(id=int(car.goodsName))})
 	dic=dict(dic,**{'lis':car_good_list})
 

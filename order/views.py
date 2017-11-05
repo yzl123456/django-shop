@@ -13,7 +13,7 @@ def order(request):
 	list2=[]
 	for area in list1:
 		phone = area.aPhoneNumber[0:3]+'****'+area.aPhoneNumber[7:]
-        list2.append({'id': area.id, 'province': area.aProvince,'city':area.aCity,'dis':area.aDis,'addressee':area.aAddressee,'phonenumber':phone,'detail':area.aDetaAddr})
+        list2.append({'id': area.id,'addressee':area.aAddressee,'phonenumber':phone,'detail':area.aDetaAddr})
 	return render(request, 'freshFruit/place_order.html',{'addr':list2})
 
 def userorder(request):
