@@ -49,10 +49,7 @@ def user_center_site(request,dic):
 
 		for i in addrinfo:
 			a = i.aPhoneNumber[0:]
-			list2.append({'id': i.id, 
-			             'aProvince': i.aProvince, 
-			             'aCity': i.aCity,
-						 'aDis': i.aDis, 
+			list2.append({'id': i.id,
 						 'aAddressee': i.aAddressee, 
 						 'aPhoneNumber': a[0:3] + u'****' + a[7:],
 						 'default':i.aDefaultAddr
@@ -67,10 +64,14 @@ def user_center_site(request,dic):
 			return HttpResponseRedirect(reverse('usercenter:user_center_site'))
 		if uchange:
 			dAddr = AddrInfo.objects.get(id=uchange)
+			#print(user.id)
+			try:
+				deFault = AddrInfo.objects.filter(aUser=user.id).get(aDefaultAddr=True)
+				deFault.aDefaultAddr=False
+				deFault.save()
+			except:
+				pass
 
-			deFault = AddrInfo.objects.filter(aUser=user.id).get(aDefaultAddr=True)
-			deFault.aDefaultAddr=False
-			deFault.save()
 			dAddr.aDefaultAddr = True
 			dAddr.save()
 			return HttpResponseRedirect(reverse('usercenter:user_center_site'))
@@ -85,46 +86,22 @@ def user_center_site(request,dic):
 		postcode = request.POST.get('postcode', None)
 		phonenumber = request.POST.get('phonenumber', None)
 
-		if addressee and province and city and detaaddr and str(phonenumber).isdigit() and len(phonenumber) == 11:
-			addrinfo = AddrInfo()
-			addrinfo.aProvince = AreaInfo.objects.get(id__exact=province)
-			addrinfo.aCity = AreaInfo.objects.get(id__exact=city)
 
-			if dis:
-				addrinfo.aDis = AreaInfo.objects.get(id__exact=dis)
-
-			addrinfo.aAddressee = addressee
-			addrinfo.aDetaAddr = detaaddr
-			addrinfo.aPostCode = postcode
-			addrinfo.aPhoneNumber = phonenumber
+		addrinfo = AddrInfo()
+		addrinfo.aAddressee = addressee
+		addrinfo.aDetaAddr = detaaddr
+		addrinfo.aPostCode = postcode
+		addrinfo.aPhoneNumber = phonenumber
 			# user = UserInfo.objects.get(uName__exact='wangchao')
 
-			addrinfo.aUser = dic['user']
-			addrinfo.save()
-			print('写入完成')
-			# addrinfo.aDefaultAddr =
-			return HttpResponseRedirect(reverse('usercenter:user_center_site'))
-			# return render(request,'usercenter/user_center_site.html')
-		else:
-			return HttpResponseRedirect(reverse('usercenter:user_center_site'))
-			# return render(request,'usercenter/user_center_site.html')
+		addrinfo.aUser = dic['user']
+		addrinfo.save()
+		print('写入完成')
+		# addrinfo.aDefaultAddr =
+		return HttpResponseRedirect(reverse('usercenter:user_center_site'))
+		# return render(request,'usercenter/user_center_site.html')
 
-def areal(request):
 
-	list1 = AreaInfo.objects.filter(aParent__isnull=True)
-
-	list2 = []
-	for a in list1:
-		list2.append({'id': a.id, 'title': a.aTitle})
-	return JsonResponse({'data': list2})
-
-def areal2(request, pid):
-	# list1=AreaInfo.objects.filter(aParent_id=pid)
-	list1 = AreaInfo.objects.get(pk=pid).areainfo_set.all()
-	list2 = []
-	for a in list1:
-		list2.append({'id': a.id, 'title': a.aTitle})
-	return JsonResponse({'data': list2})
 
 @der.login_yz
 @der.login_name

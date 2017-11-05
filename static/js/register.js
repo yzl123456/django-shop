@@ -24,19 +24,7 @@ $(function(){
 		check_email();
 	});
 
-	$('#allow').click(function() {
-		if($(this).is(':checked'))
-		{
-			error_check = false;
-			$(this).siblings('span').hide();
-		}
-		else
-		{
-			error_check = true;
-			$(this).siblings('span').html('请勾选同意');
-			$(this).siblings('span').show();
-		}
-	});
+
 
 
 	function check_user_name(){

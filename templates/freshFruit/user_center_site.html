@@ -30,26 +30,12 @@
 							<input type="text" name="addressee">
 						</div>
 
-						<div class='form_group from_arrer'>
-								<label>收件人省市区：</label>
-								<select id="pro" name='province'>
-							    <option value="">请选择省</option>
-								</select>
-								<select id="city" name='city'>
-								    <option value="">请选择市</option>
-								</select>
-								<select id="dis" name='dis'>
-								    <option value="">请选择区县</option>
-								</select>
-						</div>
+
 						<div class="form_group form_group2">
 							<label>详细地址：</label>
 							<textarea class="site_area" name="detaaddr"></textarea>
 						</div>
-						<div class="form_group">
-							<label>邮编：</label>
-							<input type="text" name="postcode">
-						</div>
+
 						<div class="form_group">
 							<label>手机：</label>
 							<input type="text" name="phonenumber">
@@ -64,35 +50,7 @@
 	
     <script type="text/javascript">
      $(function(){
-            $.get('/areal/',function(data) {
-                pro=$('#pro')
-                $.each(data.data,function(index,item){
-                    pro.append('<option value='+item.id+'>'+item.title+'</option>');
-                });
-            });
 
-
-            $('#pro').change(function () {
-            	$.get('/areal'+$(this).val()+'/',function (data) {
-            		city=$('#city');
-            		city.empty().append('<option value="">请选择市</option>');
-            		$('#dis').empty().append('<option value="">请选择区县</option>');
-            		$.each(data.data,function (index,item) {
-            			city.append('<option value='+item.id+'>'+item.title+'</option>');
-            		});
-            	});
-            });
-
-            $('#city').change(function(){
-            		$.get('/areal'+$(this).val()+'/',function (data) {
-            		dis=$('#dis');
-            		
-            		$.each(data.data,function (index,item){
-            			dis.append('<option value='+item.id+'>'+item.title+'</option>');
-            		});
-            	});
-            	
-            });
           
 
           });
