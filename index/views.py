@@ -25,7 +25,7 @@ def index(request,dic):
 		'message':message,
 		})
 	
-	return render(request,'freshFruit/index.html',{"message":message})
+	return render(request,'freshFruit/index.html',dic)
 
 def loginOut(request):
 	del request.session['name']

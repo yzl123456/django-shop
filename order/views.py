@@ -50,7 +50,7 @@ def userorder(request):
 	#构造页面上第一个订单
 	list1 = []
 	time1 = userlist[i].orderTime
-	sumPrice1 = 10
+	sumPrice1 = 0
 	extra1 = userlist[i].extra
 	if userlist[i].isFinish:
 		isfinish1 = '已'
@@ -76,7 +76,7 @@ def userorder(request):
 	#构造页面上的第二个订单
 	list2 = []
 	time2 = userlist[i].orderTime
-	sumPrice2 = 10
+	sumPrice2 = 0
 	extra2 = userlist[i].extra
 	if userlist[i].isFinish:
 		isfinish2 = '已'

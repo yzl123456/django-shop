@@ -1,6 +1,6 @@
 {%extends 'freshFruit/base_user.html'%}
 {% load static from staticfiles %}
-{%block title%}天天生鲜-提交订单{%endblock%}
+{%block title%}二货淘学-提交订单{%endblock%}
 {%block option%}提交订单{%endblock%}
 {%block user_message%}{%endblock%}
 
@@ -37,7 +37,7 @@
 	<div class="common_list_con clearfix">
 		<ul class="goods_list_th clearfix">
 			<li class="col01">商品名称</li>
-			<li class="col02">商品单位</li>
+
 			<li class="col03">商品价格</li>
 			<li class="col04">数量</li>
 			<li class="col05">小计</li>		
@@ -50,7 +50,7 @@
 			<li class="col01">{{i.count}}</li>			
 			<li class="col02"><img src="/static/{{i.goods.imgPath}}"></li>
 			<li class="col03">{{i.goods.goodsName}}</li>
-			<li class="col04">500g</li>
+
 			<li class="col05">{{i.goods.goodsPrice}}</li>
 			<li class="col06">{{i.goodscount}}</li>
 			<li class="col07">{{i.sumtotal}}元</li>	
@@ -63,8 +63,8 @@
 	<div class="common_list_con clearfix">
 		<div class="settle_con">
 			<div class="total_goods_count">共<em>{{goodsamount}}</em>件商品，总金额<b>{{alltotal}}元</b></div>
-			<div class="transit">运费：<b>{{freight}}元</b></div>
-			<div class="total_pay">实付款：<b>{{allprice}}元</b></div>
+
+			<div class="total_pay">实付款：<b>{{alltotal}}元</b></div>
 		</div>
 	</div>
 
