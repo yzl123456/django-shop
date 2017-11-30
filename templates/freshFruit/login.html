@@ -1,7 +1,7 @@
 {%extends 'freshFruit/base.html'%}
 {% load static from staticfiles %}
 
-{%block title%}天天生鲜-登录{%endblock%}
+{%block title%}二货淘学-登录{%endblock%}
 {%block top%}{%endblock%}
 
 
@@ -16,13 +16,14 @@
 </script>
 
 <div class="login_top clearfix">
-		<a href="{% url 'index:indexPage' %}" class="login_logo"><img src="{% static 'images/logo02.png' %}"></a>	
+{#		<a href="{% url 'index:indexPage' %}" class="login_logo"><img src="{% static 'images/logo02.png' %}"></a>	#}
+<a href="{% url 'index:indexPage' %}" class="login_logo"></a>
 	</div>
 
 	<div class="login_form_bg">
 		<div class="login_form_wrap clearfix">
 			<div class="login_banner fl"></div>
-			<div class="slogan fl">日夜兼程 · 急速送达</div>
+			<div class="slogan fl" style="margin-top: 30px;">专注于二手嗨淘的学生平台</div>
 			<div class="login_form fr">
 				<div class="login_title clearfix">
 					<h1>用户登录</h1>

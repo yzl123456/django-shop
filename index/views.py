@@ -45,16 +45,5 @@ def search(request):
 	print(goodslist)
 	return render(request,"freshFruit/search.html",{"SortsMsg":SortsMsg,"goodMsgList":goodslist})
 
-# 关于我们页面
-def aboutus(request):
-	return render(request,'freshFruit/aboutus.html')
-# 联系我们页面
-def callus(request):
-	return render(request,'freshFruit/callus.html')
-# 招聘人才界面
-def joinus(request):
-	return render(request,'freshFruit/joinus.html')
 
-def choujiang(request):
-	return render(request,'freshFruit/choujiang.html')
 
