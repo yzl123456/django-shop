@@ -127,9 +127,3 @@ TINYMCE_DEFAULT_CONFIG = {
     'height': 400,
 }
 
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
-    }
-}
