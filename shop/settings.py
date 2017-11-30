@@ -46,7 +46,6 @@ INSTALLED_APPS = (
     'detail',
     'cart',
     'order',
-    'haystack',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -134,6 +133,3 @@ HAYSTACK_CONNECTIONS = {
         'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
     }
 }
-
-#自动更新索引
-HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
