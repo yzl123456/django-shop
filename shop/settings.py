@@ -86,8 +86,8 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'shop',
-        'HOST':'localhost',
+        'NAME': 'alliswell$shop',
+        'HOST':'alliswell.mysql.pythonanywhere-services.com',
         'PORT':'3306',
         'USER':'alliswell',
         'PASSWORD':'hello123',
