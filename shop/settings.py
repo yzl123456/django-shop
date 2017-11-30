@@ -91,6 +91,12 @@ DATABASES = {
         'PORT':'3306',
         'USER':'alliswell',
         'PASSWORD':'hello123',
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'shopping',
+        # 'HOST': 'localhost',
+        # 'PORT': '3306',
+        # 'USER': 'root',
+        # 'PASSWORD': '123456',
     }
 }
 
