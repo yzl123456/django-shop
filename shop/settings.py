@@ -86,11 +86,11 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'shopping',
+        'NAME': 'shop',
         'HOST':'localhost',
         'PORT':'3306',
-        'USER':'root',
-        'PASSWORD':'123456',
+        'USER':'alliswell',
+        'PASSWORD':'hello123',
     }
 }
 
