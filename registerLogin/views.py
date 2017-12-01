@@ -152,6 +152,11 @@ def login(request, dic):
         if vecode.upper() != request.session['verifycode']:
             return render(request, 'freshFruit/login.html', {'error': {'password': '验证码错误'}})
         if name and password:
+            try:
+                if UserInfo.objects.get(uName=name):
+                    pass
+            except Exception as e:
+                return render(request, 'freshFruit/login.html', {'error': {'name': '该用户不存在或密码错误！'}})
 
             user = UserInfo.objects.get(uName=name)
             # 如果用户密码和验证都正确，登陆成功

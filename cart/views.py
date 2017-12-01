@@ -81,8 +81,9 @@ def place_order(request,dic):
 		orderlist.append(orderdic)
 		sumprice += goods.goodsPrice*int(count[i])
 	# area = AddrInfo.objects.filter(aUser_id=user.id).get(aDefaultAddr=True)
-	AddrList=dic['user'].addrinfo_set.all()
+	# AddrList=dic['user'].addrinfo_set.all()
 
+	AddrList = dic['user'].addrinfo_set.filter(isDelete=False)
 	dic=dict(dic,**{
 		'AddrList':AddrList,
 		'orderlist':orderlist,

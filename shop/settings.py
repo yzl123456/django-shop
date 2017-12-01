@@ -85,18 +85,18 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'alliswell$shop',
-        'HOST':'alliswell.mysql.pythonanywhere-services.com',
-        'PORT':'3306',
-        'USER':'alliswell',
-        'PASSWORD':'hello123',
         # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'shopping',
-        # 'HOST': 'localhost',
-        # 'PORT': '3306',
-        # 'USER': 'root',
-        # 'PASSWORD': '123456',
+        # 'NAME': 'alliswell$shop',
+        # 'HOST':'alliswell.mysql.pythonanywhere-services.com',
+        # 'PORT':'3306',
+        # 'USER':'alliswell',
+        # 'PASSWORD':'hello123',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'shopping',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': '123456',
     }
 }
 
@@ -123,7 +123,7 @@ MEDIA_ROOT=os.path.join(BASE_DIR,"static/")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-STATIC_ROOT='/var/www/shop/static/'
+STATIC_ROOT='/home/alliswell/django-shop/static/'
 
 
 

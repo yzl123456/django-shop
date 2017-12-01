@@ -7,6 +7,6 @@ urlpatterns = [
     url(r'^index/$',views.index,name='indexPage'),
 
  	url(r'^loginOut/$',views.loginOut,name='loginOut'),
-
+    url(r'^$',views.index,name='indexPage'),
     ]
 

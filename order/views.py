@@ -11,9 +11,11 @@ import random
 def order(request):
 	list1 = AddrInfo.objects.filter(isDelete=False).filter(aName='张三').filter(aDefaultAddr=True)
 	list2=[]
+	print(list1)
 	for area in list1:
 		phone = area.aPhoneNumber[0:3]+'****'+area.aPhoneNumber[7:]
         list2.append({'id': area.id,'addressee':area.aAddressee,'phonenumber':phone,'detail':area.aDetaAddr})
+	print(list2)
 	return render(request, 'freshFruit/place_order.html',{'addr':list2})
 
 def userorder(request):

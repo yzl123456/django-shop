@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^verify/$',views.verify,name='verify'),
     url(r'^show_verify2/$', views.show_verify2),  # 显示验证码界面
     url(r'^verify_check2/$', views.verify_check2), # 检测验证码
+
 ]
