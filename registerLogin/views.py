@@ -114,7 +114,9 @@ def register(request):
                 user.save()
 
                 print('写入完成')
-                return HttpResponseRedirect('/login/')
+                request.session['name'] = user_name
+                return HttpResponseRedirect('/index/')
+
             else:
                 print('user has exis:不允许注册')
                 return render(request, 'freshFruit/register.html')
@@ -189,7 +191,7 @@ def changekw(request):
             auser = UserInfo.objects.get(uName=user_name)
             if auser.uEmail == email:
                 n = hashlib.md5()
-                n.update(password)
+                n.update(password.encode("utf8"))
                 auser.uPassword = n.hexdigest()
                 auser.save()
                 return HttpResponseRedirect('/login/')
