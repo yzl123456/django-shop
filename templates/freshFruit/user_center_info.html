@@ -12,7 +12,7 @@
 				<h3 class="common_title2">基本信息</h3>
 						<ul class="user_info_list">
 							<li><span>用户名：</span>{{user.uName}}</li>
-							<li id ='uphone'><span>联系方式：</span>{{user.uPhoneNumber}}</li>
+							<li id ='uphone'><span>联系方式：</span><p id="ucall">{{user.uPhoneNumber}}</p></li>
 							<li id ='uaddr'><span>联系地址：</span>{{user.uAddr}}
 
 							<div class="edit_btn" id="edit_btn">编辑</div>
@@ -40,38 +40,95 @@
 		</div>
 		</div>
 	</div>
+
 <script type="text/javascript">
 		$(function(){
 		$('#edit_btn').click(function(){
 			
-			$("#uphone").html('<span>联系方式：</span><input type="text" name="phonenumber" value="{{user.uPhoneNumber}}">');
+			$("#uphone").html('<span>联系方式：</span><input id="ucall" type="text" name="phonenumber" value="{{user.uPhoneNumber}}">');
 			$("#uaddr").html('<span>联系地址：</span><input type="text" name="addr" value="{{user.uAddr}}"><div class="edit_btn" id="edit_btn">编辑</div><input class="edit_submit"  type="submit" name="" value="提交">');
 			$(":submit").css("display","inline-block");
-
+            $("#ucall").blur(function () {
+                var le=$(this).val().length
+                if(le!=11) {
+                    alert("手机号码需要11位！")
+                    $(this).val({{ user.uPhoneNumber }})
+                }
+            })
 		});
 
-			$('.add_goods').click(function(){
-		thisgood=$(this).attr('value')
-			$.ajax({
-   	 	url: '/addcart/',
-    	type: 'POST',
-    	dataType: 'json',
-    	data:{'goodsName':thisgood,'buyCount':1}
-	})
-	.done(function(data) {
-		
-		$('#show_count').html(data.number)
-		}
-	)
-	.fail(function() {
-		// error_name = 'True';
-    alert('服务器超时，请重试！');
-	});
-}
+            $('.add_goods').click(function(){
+
+                thisgood=$(this).attr('value')
+                    $.ajax({
+                url: '/addcart/',
+                type: 'POST',
+                dataType: 'json',
+                data:{'goodsName':thisgood,'buyCount':1}
+            })
+            .done(function(data) {
+
+                $('#show_count').html(data.number)
+                }
+            )
+            .fail(function() {
+                // error_name = 'True';
+            alert('服务器超时，请重试！');
+            });
+        }
 		)
 	})
 
 </script>
+<script>
+    (function($) {
+        $.extend({
+            tipsBox: function(options) {
+                options = $.extend({
+                    obj: null,
+                    str: "+1",
+                    startSize: "30px",
+                    endSize: "60px",
+                    interval: 1000,
+                    color: "#ff5400",
+                    callback: function() {}
+                }, options);
+                $("body").append("<span class='num'>"+ options.str +"</span>");
+                var box = $(".num");
+                var left = options.obj.offset().left ;
+                var top = options.obj.offset().top - options.obj.height()-200;
+                box.css({
+                    "position": "absolute",
+                    "left": left + "px",
+                    "top": top + "px",
+                    "z-index": 9999,
+                    "font-size": options.startSize,
+                    "line-height": options.endSize,
+                    "color": options.color
+                });
+                box.animate({
+                    "font-size": options.endSize,
+                    "opacity": "0",
+                    "top": top - parseInt(options.endSize) + "px"
+                }, options.interval , function() {
+                    box.remove();
+                    options.callback();
+                });
+            }
+        });
+    })(jQuery);
+</script>
+<script>
+	$(function() {
+		$(".add_goods").click(function() {
+			$.tipsBox({
+				obj: $(this),
+				str: "+1",
+                callback: function() {
+                }
+			});
+		});
+	});
+</script>
 
-	
 {%endblock%}

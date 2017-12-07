@@ -21,8 +21,8 @@ def detail(request,dic):
 	if goodsId:
 		good = Goods.objects.get(pk=goodsId)
 	newgoodslist=good.goodSort.goods_set.all().order_by("-gPubdate")[0:2]
-
-	GoodsComment=good.goodscomment_set.all().order_by("-commentDate")[0:2]
+	GoodsComment=good.goodscomment_set.all().order_by("-commentDate")
+	# GoodsComment=good.goodscomment_set.all().order_by("-commentDate")[0:2]
 	if dic['user']:
 		flag=False
 		rece= dic['user'].recentsee_set.all().order_by('-id')[0:5]
