@@ -65,7 +65,7 @@ $(function(){
 		error_name = true;
     alert('111服务器超时，请重试！');
 	});
-}
+	}
 
 
 	function check_pwd(){
